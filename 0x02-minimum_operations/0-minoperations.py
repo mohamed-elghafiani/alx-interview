@@ -30,7 +30,7 @@ def find_num_op(n, text, op, paste, nop, solutions):
 
 def minOperations(n):
     """Find minimum operations needed to arrive at n * 'H' """
-    if n > 0:
+    if n > 1:
         solutions = find_num_op(
                 n,
                 text='H',
