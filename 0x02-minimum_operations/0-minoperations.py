@@ -39,4 +39,4 @@ def minOperations(n):
         else:
             return 0
     else:
-         print('n should be > 0')
+         return 0
