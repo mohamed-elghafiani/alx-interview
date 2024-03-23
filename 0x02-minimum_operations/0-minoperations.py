@@ -24,14 +24,21 @@ def find_num_op(n, text, op, paste, nop, solutions):
 
         find_num_op(n, text, 'P', paste, nop, solutions)
         find_num_op(n, text, 'CP', paste, nop, solutions)
-   
+
     return solutions
 
 
 def minOperations(n):
     """Find minimum operations needed to arrive at n * 'H' """
     if n > 0:
-        solutions = find_num_op(n, text='H', op='CP', paste='', nop=0, solutions=[])
+        solutions = find_num_op(
+                n,
+                text='H',
+                op='CP',
+                paste='',
+                nop=0,
+                solutions=[]
+                )
         finals = list(filter(lambda item: len(item[0]) == n, solutions))
         if finals:
             best = min(finals, key=lambda item: item[1])
@@ -39,4 +46,4 @@ def minOperations(n):
         else:
             return 0
     else:
-         return 0
+        return 0
