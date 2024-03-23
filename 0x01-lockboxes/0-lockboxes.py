@@ -17,6 +17,7 @@ def open_recursive(unlocked, start, boxes):
 
     return unlocked
 
+
 def canUnlockAll(boxes):
     """Check if all boxes can be unlocked"""
     unlocked = [0]
@@ -26,4 +27,3 @@ def canUnlockAll(boxes):
         if i not in set(unlocked):
             return False
     return True
-
