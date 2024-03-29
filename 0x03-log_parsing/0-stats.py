@@ -4,6 +4,7 @@
 """
 import sys
 import re
+import signal
 
 
 total_size = 0
@@ -18,6 +19,19 @@ status_codes = {
         "405": 0,
         "500": 0
     }
+
+
+def interrupt_handler(signum, frame):
+    """SIGINT handler"""
+    global total_size
+    global status_codes
+    print(f"File size: {total_size}")
+    for key, val in status_codes.items():
+        if val != 0:
+            print(f"{key}: {val}")
+
+signal.signal(signal.SIGINT, interrupt_handler)
+
 
 for n, line in enumerate(sys.stdin):
     pattern = re.compile(
