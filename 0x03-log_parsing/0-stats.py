@@ -13,7 +13,6 @@ status_codes = {
         "301": 0,
         "400": 0,
         "401": 0,
-        "402": 0,
         "403": 0,
         "404": 0,
         "405": 0,
@@ -48,7 +47,7 @@ for n, line in enumerate(sys.stdin):
         total_size += int(match.groupdict()['size'])
         status_codes[match.groupdict()['status_code']] += 1
 
-    if n % 10:
+    if (n + 1) % 10:
         print(f"File size: {total_size}")
         for key, val in status_codes.items():
             if val != 0:
