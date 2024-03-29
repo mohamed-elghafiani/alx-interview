@@ -22,7 +22,7 @@ status_codes = {
 for n, line in enumerate(sys.stdin):
     pattern = re.compile(
         r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
-        r' - ' 
+        r' - '
         r'\[[^\]]+\]'
         r' "GET /projects/260 HTTP/1.1"'
         r' (?P<status_code>\d{3})'
@@ -33,7 +33,7 @@ for n, line in enumerate(sys.stdin):
     if match:
         total_size += int(match.groupdict()['size'])
         status_codes[match.groupdict()['status_code']] += 1
-    
+
     if n % 10:
         print(f"File size: {total_size}")
         for key, val in status_codes.items():
