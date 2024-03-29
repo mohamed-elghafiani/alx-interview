@@ -52,6 +52,6 @@ for line in sys.stdin:
     if counter % 10:
         counter = 0
         print(f"File size: {total_size}")
-        for key, val in status_codes.items():
+        for key, val in sorted(status_codes.items()):
             if val != 0:
                 print(f"{key}: {val}")
