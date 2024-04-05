@@ -40,7 +40,10 @@ def validUTF8(data):
         if skip == -1:
             return False
         for j in range(1, skip):
-            if data[i + j] & int('11000000', 2) != int('10000000', 2):
+            if (
+                i + j >= len(data) or 
+                data[i + j] & int('11000000', 2) != int('10000000', 2)
+            ):
                 return False
 
         i += skip
