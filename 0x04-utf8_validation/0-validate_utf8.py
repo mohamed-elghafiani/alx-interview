@@ -33,6 +33,9 @@ def validUTF8(data):
     """Checks if a given data set represents a valid UTF-8 encoding"""
     i = 0
     while i < len(data):
+        if data[i] > 255 or data[i] < 0:
+            return False
+
         skip = encoding_bytes(data[i])
         if skip == -1:
             return False
