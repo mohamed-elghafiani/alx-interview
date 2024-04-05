@@ -31,6 +31,8 @@ def encoding_bytes(value: int) -> int:
 
 def validUTF8(data):
     """Checks if a given data set represents a valid UTF-8 encoding"""
+    if not all(isinstance(val, int) for val in data):
+        return False
     i = 0
     while i < len(data):
         if data[i] > 255 or data[i] < 0:
