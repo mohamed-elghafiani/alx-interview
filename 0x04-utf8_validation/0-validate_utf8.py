@@ -41,7 +41,7 @@ def validUTF8(data):
             return False
         for j in range(1, skip):
             if (
-                i + j >= len(data) or 
+                i + j >= len(data) or
                 data[i + j] & int('11000000', 2) != int('10000000', 2)
             ):
                 return False
