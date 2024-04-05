@@ -39,9 +39,9 @@ def validUTF8(data):
         skip = encoding_bytes(data[i])
         if skip == -1:
             return False
-        for i in range(1, skip):
-            if data[i] & int('11000000', 2) != int('10000000', 2):
+        for j in range(1, skip):
+            if data[i + j] & int('11000000', 2) != int('10000000', 2):
                 return False
-            i += 1
+
         i += skip
     return True
