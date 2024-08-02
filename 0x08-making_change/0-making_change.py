@@ -11,7 +11,8 @@ def makeChange(coins, total):
 
     Args:
         coins (list): List of the values of the coins in your possession.
-        total (int): The total amount to be met with the fewest number of coins.
+        total (int): The total amount to be met with the fewest number of
+        coins.
 
     Returns:
         int: The fewest number of coins needed to meet the total.
