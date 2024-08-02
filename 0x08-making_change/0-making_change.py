@@ -1,17 +1,13 @@
-#!/usr/bin/python3
-"""
-This module contains the makeChange function that calculates the fewest number
-of coins needed to meet a given total.
-"""
+from collections import deque
 
 def makeChange(coins, total):
     """
     Determines the fewest number of coins needed to meet a given total.
-    
+
     Args:
         coins (list): List of the values of the coins in your possession.
         total (int): The total amount to be met with the fewest number of coins.
-        
+
     Returns:
         int: The fewest number of coins needed to meet the total.
              Returns 0 if total is 0 or less.
@@ -19,16 +15,23 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    
-    # Initialize dp array with infinity, representing the minimum coins needed for each amount
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0  # Base case: 0 coins are needed to make the amount 0
-    
-    # Iterate through each coin and update the dp array
-    for coin in coins:
-        for amount in range(coin, total + 1):
-            dp[amount] = min(dp[amount], dp[amount - coin] + 1)
-    
-    # If dp[total] is still infinity, return -1 (total cannot be formed)
-    return dp[total] if dp[total] != float('inf') else -1
 
+    # Initialize the BFS queue
+    queue = deque([(0, 0)])  # (current amount, number of coins)
+    visited = set()  # To keep track of visited amounts
+
+    while queue:
+        current_amount, num_coins = queue.popleft()
+
+        # Try every coin and add the new amount to the queue if not visited
+        for coin in coins:
+            new_amount = current_amount + coin
+
+            if new_amount == total:
+                return num_coins + 1  # Found the solution
+            elif new_amount < total and new_amount not in visited:
+                visited.add(new_amount)
+                queue.append((new_amount, num_coins + 1))
+
+    # If we exhaust the queue without finding the solution
+    return -1
